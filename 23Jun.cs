@@ -10,7 +10,7 @@ using System;
 class HelloWorld {
   static void Main() {
       string name="srikanth";
-      int id=1098;
+      int id=0198;
     Console.WriteLine("Hello "+name+" "+id);
   }
 }
