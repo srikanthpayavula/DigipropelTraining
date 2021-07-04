@@ -62,12 +62,15 @@ namespace Assmt
         */
 
         /* Write a program in C# Sharp to find the length of a string*/
-        public void StrLength()
-        {
-            Console.WriteLine("Enter the string value");
-            string Name = Console.ReadLine();
-            int NameLength = Name.Length;
-            Console.WriteLine("Total number of words in the string is : " + NameLength);
+        public void StrLength() string str;
+            int length = 0;
+            Console.WriteLine("enter string value");
+            str = Console.ReadLine();
+            foreach(char ch in str)
+            {
+                length = length + 1;
+            }
+            Console.WriteLine("Total length of string : " + length);
         }
         /* Input    
          digipropel.com
@@ -78,24 +81,20 @@ namespace Assmt
         /*5. Write a program in C# Sharp to count the total number of words in a string. */
         public void StrWordCount()
         {
-            string Name;
+           string str;
+            int a=0, totalwords = 1;
             Console.WriteLine("enter string value");
-            Name = Console.ReadLine();
-            int wordCount = 0;
+           str = Console.ReadLine();
 
-            for (int i = 0; i < Name.Length - 1; i++)
+            while (a < str.Length -1)
             {
-
-                if (Name[i] == ' ' && Char.IsLetter(Name[i + 1]) && (i > 0))
-                {
-                    wordCount++;
-                }
+                 if (str[a] == ' ' || str[a] == '\n' || str[a] == '\t')
+                    {
+                        totalwords++;
+                    }
+                a++;
             }
-            // count the words present in the string  
-            wordCount++;
-
-            //Displays the total number of words present in the given string  
-            Console.WriteLine("Total number of words in the given string: " + wordCount);
+            Console.WriteLine("Total number of words present in string : " + totalwords);
         }
         /*Input  
         This is first program
