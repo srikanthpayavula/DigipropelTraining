@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -57,15 +57,15 @@ namespace July
         class UseStudent
         {
 
-            //public static void Main()
-            //{
+            public static void Main()
+            {
 
-            //    Student s = new Student(1, "ABC", "c#");
-            //    s.Payment(1000);
-            //    s.Print();
-            //    Console.WriteLine(s.DueAmount);
-            //    Console.ReadLine();
-            //}
+                Student s = new Student(1, "ABC", "c#");
+                s.Payment(1000);
+                s.Print();
+                Console.WriteLine(s.DueAmount);
+                Console.ReadLine();
+            }
         }
     }
 }
