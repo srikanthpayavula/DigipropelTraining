@@ -1,4 +1,4 @@
-﻿/*Make D:\csharp\example.dat file using BinaryWriter class, store current date and time and read that text using BinaryReader class.
+/*Make D:\csharp\example.dat file using BinaryWriter class, store current date and time and read that text using BinaryReader class.
 */
 using System;
 using System.Collections.Generic;
@@ -9,48 +9,48 @@ using System.IO;
 
 namespace Assmt_July
 {
-   
-
-    //class ConsoleApplication
-    //{
-    //    const string fileName = "example.dat";
 
 
-    //    static void Main()
-    //    {
-    //        WriteDefaultValues();
-    //        DisplayValues();
-    //    }
+    class ConsoleApplication
+    {
+        const string fileName = "example.dat";
 
-    //    public static void WriteDefaultValues()
-    //    {
-    //        using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create)))
-    //        {
-    //            writer.Write(Convert.ToString(DateTime.Now));
-    //            // write the file directory and file location of example.dat file
-    //            writer.Write(@"E:\practice\jul5_5\Assmt_July\Assmt_July\bin\Debug\example.dat");
-    //        }
-    //    }
 
-    //    public static void DisplayValues()
-    //    {
-    //        string date;
-    //        string tempDirectory;
+        static void Main()
+        {
+            WriteDefaultValues();
+            DisplayValues();
+        }
 
-    //        if (File.Exists(fileName))
-    //        {
-    //            using (BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open)))
-    //            {
-    //                date = reader.ReadString();
-    //                tempDirectory = reader.ReadString();
-    //            }
+        public static void WriteDefaultValues()
+        {
+            using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create)))
+            {
+                writer.Write(Convert.ToString(DateTime.Now));
+                // write the file directory and file location of example.dat file
+                writer.Write(@"E:\practice\jul5_5\Assmt_July\Assmt_July\bin\Debug\example.dat");
+            }
+        }
 
-    //            Console.WriteLine("Current date and time: " + date);
-    //            Console.WriteLine("Temp directory is: " + tempDirectory);
-    //            Console.ReadLine();
-    //        }
-    //    }
-    //}
+        public static void DisplayValues()
+        {
+            string date;
+            string tempDirectory;
+
+            if (File.Exists(fileName))
+            {
+                using (BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open)))
+                {
+                    date = reader.ReadString();
+                    tempDirectory = reader.ReadString();
+                }
+
+                Console.WriteLine("Current date and time: " + date);
+                Console.WriteLine("Temp directory is: " + tempDirectory);
+                Console.ReadLine();
+            }
+        }
+    }
 }
 
 /*output
