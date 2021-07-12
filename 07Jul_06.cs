@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,28 +61,28 @@ namespace July_06
         }
     }
 
-    //class UseStack
-    //{
-    //    public static void Main()
-    //    {
-    //        try
-    //        {
-    //            Stack s = new Stack();
-    //            s.Push(20);
+    class UseStack
+    {
+        public static void Main()
+        {
+            try
+            {
+                Stack s = new Stack();
+                s.Push(20);
 
-    //            Console.WriteLine(s.Pop());
-    //            Console.WriteLine(s.Length);
+                Console.WriteLine(s.Pop());
+                Console.WriteLine(s.Length);
 
-    //            Console.WriteLine(s.Pop());
-              
-    //        }
-    //        catch(Exception ex)
-    //        {
-    //            Console.WriteLine(ex.Message);
-    //        }
-    //        Console.Read();
-    //    }
-    //}
+                Console.WriteLine(s.Pop());
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Console.Read();
+        }
+    }
 }
 /*
  output
