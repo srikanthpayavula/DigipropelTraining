@@ -2,86 +2,52 @@ using System;
 using System.Security.Cryptography;
 using System.IO;
 using System.Text;
-
-public class Program
+class EncryptionDecryption
 {
-    public static string EncryptString(string key, string plainText)  
-        {  
-            byte[] iv = new byte[16];  
-            byte[] array;  
-  
-            using (Aes aes = Aes.Create())  
-            {  
-                aes.Key = Encoding.UTF8.GetBytes(key);  
-                aes.IV = iv;  
-  
-                ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);  
-  
-                using (MemoryStream memoryStream = new MemoryStream())  
-                {  
-                    using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, encryptor, CryptoStreamMode.Write))  
-                    {  
-                        using (StreamWriter streamWriter = new StreamWriter((Stream)cryptoStream))  
-                        {  
-                            streamWriter.Write(plainText);  
-                        }  
-  
-                        array = memoryStream.ToArray();  
-                    }  
-                }  
-            }  
-  
-            return Convert.ToBase64String(array);  
-        }  
-  
-        public static string DecryptString(string key, string cipherText)  
-        {  
-            byte[] iv = new byte[16];  
-            byte[] buffer = Convert.FromBase64String(cipherText);  
-  
-            using (Aes aes = Aes.Create())  
-            {  
-                aes.Key = Encoding.UTF8.GetBytes(key);  
-                aes.IV = iv;  
-                ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);  
-  
-                using (MemoryStream memoryStream = new MemoryStream(buffer))  
-                {  
-                    using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, decryptor, CryptoStreamMode.Read))  
-                    {  
-                        using (StreamReader streamReader = new StreamReader((Stream)cryptoStream))  
-                        {  
-                            return streamReader.ReadToEnd();  
-                        }  
-                    }  
-                }  
-            }  
-        } 
- 	
-	public static void Main()
-	{
-		// declaring key
-		var key = "f14ca5898a4e4133bbce2ea2315a1916";
-		// input parameters
-        Console.WriteLine("enter string for encryption");
-        var input=Console.ReadLine();
-
-		// encrypt parameters
-		var encryptedinput=Program.EncryptString(key,input);
-		Console.WriteLine("Encrypted string: " + encryptedinput);
-		
-		// decrypt parameters
-		var decrptedInput = Program.DecryptString(key,encryptedinput);
-		Console.WriteLine("Decrypted string: " + decrptedInput);
-
-        Console.ReadLine();
-	}
-}	
-
+	public static string Encrypt(string text)
+        {
+            int letterInt = 0;
+            char singleLetter = ' ';
+            string textEncripted = "";
+            for (int i = 0; i < text.Length; i++)
+            {
+                letterInt = (int)text[i] + 1;// converting letter to ascii integer and adding +1 to that int
+				//Console.WriteLine("ascii integer value : {0}",letterInt);
+                singleLetter = (char)letterInt; // converting the ascii int to char letter again
+                textEncripted += singleLetter.ToString(); // joining the letter
+            }
+            return textEncripted;
+        }
+ 
+        public static string Decrypt(string text)
+        {
+            int letterInt = 0;
+            char singleLetter = ' ';
+            string textDecripted = "";
+            for (int i = 0; i < text.Length; i++)
+            {
+                letterInt = (int)text[i] - 1;
+                singleLetter = (char)letterInt;
+                textDecripted += singleLetter.ToString();
+            }
+            return textDecripted;
+        }
+    }
+ 
+   public class TestData
+    {
+       public static void Main()
+        {
+          
+            string newText = EncryptionDecryption.Encrypt("Hello");
+            Console.WriteLine("Text encripted: {0}", newText);
+            string TextDescripted = EncryptionDecryption.Decrypt(newText);
+            Console.WriteLine("Text Decripted: {0}", TextDescripted);
+ 
+           
+        }
+    }
 /*
-output
-enter string for encryption
-srikanth phs
-encrypted string: 7QDy8172MWs==
-decrypted string: srikanth phs
-*/
+output:
+Text encripted: Ifmmp
+Text Decripted: Hello*/
